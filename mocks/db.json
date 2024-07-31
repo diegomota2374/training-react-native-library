@@ -1,0 +1,88 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Aprendendo JSON",
+      "author": "Maria Silva",
+      "description": "Um guia completo para iniciantes em JSON.",
+      "year": 2021,
+      "genre": "Tecnologia",
+      "img": "https://images.stockcake.com/public/0/7/f/07fd2c82-3e12-4a1d-b6da-06aa5cbce868_large/antique-book-cover-stockcake.jpg",
+      "creation_date": "2021-05-01",
+      "modification_date": "2021-06-15",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Introdução ao JSON",
+          "content": "Neste capítulo, você aprenderá o básico sobre JSON..."
+        },
+        {
+          "number": 2,
+          "title": "Estrutura de Dados em JSON",
+          "content": "Aqui discutiremos como organizar dados em JSON..."
+        },
+        {
+          "number": 3,
+          "title": "Utilizando JSON em APIs",
+          "content": "Neste capítulo, exploraremos como usar JSON em APIs..."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Python para Iniciantes",
+      "author": "João Pereira",
+      "description": "Uma introdução prática ao mundo da programação com Python.",
+      "year": 2020,
+      "genre": "Tecnologia",
+      "img": "img2",
+      "creation_date": "2020-03-10",
+      "modification_date": "2020-08-21",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "O Básico de Python",
+          "content": "Este capítulo cobre os fundamentos da linguagem Python..."
+        },
+        {
+          "number": 2,
+          "title": "Estruturas de Controle",
+          "content": "Aqui você aprenderá sobre estruturas de controle, como loops e condicionais..."
+        },
+        {
+          "number": 3,
+          "title": "Trabalhando com Dados",
+          "content": "Exploramos como trabalhar com diferentes tipos de dados em Python..."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Introdução ao HTML e CSS",
+      "author": "Ana Oliveira",
+      "description": "Guia básico para criar websites com HTML e CSS.",
+      "year": 2019,
+      "genre": "Tecnologia",
+      "img": "img3",
+      "creation_date": "2019-04-22",
+      "modification_date": "2019-11-30",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Fundamentos do HTML",
+          "content": "Neste capítulo, você aprenderá a criar a estrutura de uma página web com HTML..."
+        },
+        {
+          "number": 2,
+          "title": "Estilizando com CSS",
+          "content": "Aqui você aprenderá como aplicar estilos às páginas web usando CSS..."
+        },
+        {
+          "number": 3,
+          "title": "Layout Responsivo",
+          "content": "Exploraremos técnicas para tornar seu website responsivo..."
+        }
+      ]
+    }
+  ]
+}
