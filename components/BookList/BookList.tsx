@@ -6,6 +6,7 @@ import { Book } from "@/models/books";
 import BookItem from "../BookItem/BookItem";
 import axios from "axios";
 import Pagination from "../Pagination/Pagination";
+import FloatingButton from "../FloatingButton/FloatingButton";
 
 const BookList = () => {
   const [books, setBooks] = useState<Book[]>([]);
@@ -54,13 +55,14 @@ const BookList = () => {
           setCurrentPage={setCurrentPage}
         />
       </ThemedView>
+      <FloatingButton />
     </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   tableContente: {
-    maxHeight: 400,
+    paddingBottom: 50,
   },
 });
 
