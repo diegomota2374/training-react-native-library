@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Platform } from "react-native";
 
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedView } from "@/components/ThemedView";
+import ParallaxScrollView from "@/components/ParallaxScrollView/ParallaxScrollView";
+import { ThemedView } from "@/components/ThemedView/ThemedView";
 import BookList from "@/components/BookList/BookList";
 
 export default function HomeScreen() {

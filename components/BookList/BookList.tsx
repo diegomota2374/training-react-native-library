@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { Alert, StyleSheet } from "react-native";
 import { useFocusEffect } from "expo-router";
-import { ThemedView } from "../ThemedView";
+import { ThemedView } from "../ThemedView/ThemedView";
 import { Book } from "@/models/books";
 import BookItem from "../BookItem/BookItem";
 import axios from "axios";
@@ -17,7 +17,7 @@ const BookList = () => {
       const totalItemBook = (await axios.get(`${apiUrl}/books`)).data.length;
       // get the books in json-server
       const res = await axios.get(`${apiUrl}/books`, {
-        params: { _page: 1, _per_page: 2 },
+        params: { _page: 1, _per_page: 5 },
       });
       setBooks(res.data["data"]);
     } catch (error) {
@@ -39,7 +39,7 @@ const BookList = () => {
     <ThemedView>
       <ThemedView style={styles.tableContente}>
         {books.map((item) => (
-          <BookItem book={item} />
+          <BookItem key={item.id} book={item} />
         ))}
       </ThemedView>
     </ThemedView>
