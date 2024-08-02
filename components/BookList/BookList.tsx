@@ -5,10 +5,16 @@ import { ThemedView } from "../ThemedView/ThemedView";
 import { Book } from "@/models/books";
 import BookItem from "../BookItem/BookItem";
 import axios from "axios";
+import Pagination from "../Pagination/Pagination";
 
 const BookList = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
+
+  const itemsPerPage = 4;
+
   const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 
   const fetchBooks = useCallback(async () => {
@@ -17,16 +23,17 @@ const BookList = () => {
       const totalItemBook = (await axios.get(`${apiUrl}/books`)).data.length;
       // get the books in json-server
       const res = await axios.get(`${apiUrl}/books`, {
-        params: { _page: 1, _per_page: 5 },
+        params: { _page: currentPage, _per_page: itemsPerPage },
       });
       setBooks(res.data["data"]);
+      setTotalPages(Math.ceil(totalItemBook / itemsPerPage));
     } catch (error) {
       const errorMessage =
         "Erro ao buscar livro. Verifique sua conexão de rede.";
       setError(errorMessage);
       Alert.alert("Erro", errorMessage);
     }
-  }, []);
+  }, [currentPage]);
 
   useFocusEffect(
     useCallback(() => {
@@ -41,6 +48,11 @@ const BookList = () => {
         {books.map((item) => (
           <BookItem key={item.id} book={item} />
         ))}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
       </ThemedView>
     </ThemedView>
   );
@@ -48,7 +60,7 @@ const BookList = () => {
 
 const styles = StyleSheet.create({
   tableContente: {
-    maxHeight: 500,
+    maxHeight: 400,
   },
 });
 

@@ -83,6 +83,90 @@
           "content": "Exploraremos técnicas para tornar seu website responsivo..."
         }
       ]
+    },
+    {
+      "id": 4,
+      "title": "Introdução ao HTML e CSS",
+      "author": "Ana Oliveira",
+      "description": "Guia básico para criar websites com HTML e CSS.",
+      "year": 2019,
+      "genre": "Tecnologia",
+      "img": "img3",
+      "creation_date": "2019-04-22",
+      "modification_date": "2019-11-30",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Fundamentos do HTML",
+          "content": "Neste capítulo, você aprenderá a criar a estrutura de uma página web com HTML..."
+        },
+        {
+          "number": 2,
+          "title": "Estilizando com CSS",
+          "content": "Aqui você aprenderá como aplicar estilos às páginas web usando CSS..."
+        },
+        {
+          "number": 3,
+          "title": "Layout Responsivo",
+          "content": "Exploraremos técnicas para tornar seu website responsivo..."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Introdução ao HTML e CSS",
+      "author": "Ana Oliveira",
+      "description": "Guia básico para criar websites com HTML e CSS.",
+      "year": 2019,
+      "genre": "Tecnologia",
+      "img": "img3",
+      "creation_date": "2019-04-22",
+      "modification_date": "2019-11-30",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Fundamentos do HTML",
+          "content": "Neste capítulo, você aprenderá a criar a estrutura de uma página web com HTML..."
+        },
+        {
+          "number": 2,
+          "title": "Estilizando com CSS",
+          "content": "Aqui você aprenderá como aplicar estilos às páginas web usando CSS..."
+        },
+        {
+          "number": 3,
+          "title": "Layout Responsivo",
+          "content": "Exploraremos técnicas para tornar seu website responsivo..."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Introdução ao HTML e CSS",
+      "author": "Ana Oliveira",
+      "description": "Guia básico para criar websites com HTML e CSS.",
+      "year": 2019,
+      "genre": "Tecnologia",
+      "img": "img3",
+      "creation_date": "2019-04-22",
+      "modification_date": "2019-11-30",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "Fundamentos do HTML",
+          "content": "Neste capítulo, você aprenderá a criar a estrutura de uma página web com HTML..."
+        },
+        {
+          "number": 2,
+          "title": "Estilizando com CSS",
+          "content": "Aqui você aprenderá como aplicar estilos às páginas web usando CSS..."
+        },
+        {
+          "number": 3,
+          "title": "Layout Responsivo",
+          "content": "Exploraremos técnicas para tornar seu website responsivo..."
+        }
+      ]
     }
   ]
 }
