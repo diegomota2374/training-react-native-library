@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Aprendendo JSON",
       "author": "Maria Silva",
       "description": "Um guia completo para iniciantes em JSON.",
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Python para Iniciantes",
       "author": "João Pereira",
       "description": "Uma introdução prática ao mundo da programação com Python.",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Introdução ao HTML e CSS",
       "author": "Ana Oliveira",
       "description": "Guia básico para criar websites com HTML e CSS.",
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Introdução ao HTML e CSS",
       "author": "Ana Oliveira",
       "description": "Guia básico para criar websites com HTML e CSS.",
@@ -113,7 +113,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Introdução ao HTML e CSS",
       "author": "Ana Oliveira",
       "description": "Guia básico para criar websites com HTML e CSS.",
@@ -141,7 +141,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Introdução ao HTML e CSS",
       "author": "Ana Oliveira",
       "description": "Guia básico para criar websites com HTML e CSS.",
@@ -167,6 +167,18 @@
           "content": "Exploraremos técnicas para tornar seu website responsivo..."
         }
       ]
+    },
+    {
+      "id": "b846",
+      "title": "Diego",
+      "author": "Diego",
+      "genre": "Aventura"
+    },
+    {
+      "id": "cae8",
+      "title": "Diego",
+      "author": "Diego",
+      "genre": "Aventura"
     }
   ]
 }

@@ -5,7 +5,7 @@ import BookItem from "../BookItem/BookItem";
 import Pagination from "../Pagination/Pagination";
 import FloatingButton from "../FloatingButton/FloatingButton";
 import { ThemedText } from "../ThemedText/ThemedText";
-import useFetchBooks from "@/hooks/useFethBooks";
+import useFetchBooks from "@/hooks/useFetchBooks";
 import Loading from "../Loading/Loading";
 
 const BookList = () => {
@@ -40,7 +40,7 @@ const BookList = () => {
               setCurrentPage={setCurrentPage}
             />
           </ThemedView>
-          <FloatingButton />
+          <FloatingButton navigate="/book/form" />
         </ThemedView>
       )}
     </ThemedView>

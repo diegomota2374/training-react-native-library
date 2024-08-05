@@ -1,10 +1,16 @@
-import { Image, StyleSheet, Platform } from "react-native";
-
+import BookForm from "@/components/BookForm/BookForm";
 import ParallaxScrollView from "@/components/ParallaxScrollView/ParallaxScrollView";
+import { ThemedText } from "@/components/ThemedText/ThemedText";
 import { ThemedView } from "@/components/ThemedView/ThemedView";
-import BookList from "@/components/BookList/BookList";
+import { useLocalSearchParams } from "expo-router";
+import { Image, StyleSheet } from "react-native";
 
-export default function HomeScreen() {
+const FormBook = () => {
+  const { book } = useLocalSearchParams();
+
+  const initialBook =
+    book && book !== "forme" ? JSON.parse(book as string) : "forme";
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -16,11 +22,12 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <BookList />
+        <BookForm initialBook={initialBook} />
       </ThemedView>
     </ParallaxScrollView>
   );
-}
+};
+export default FormBook;
 
 const styles = StyleSheet.create({
   titleContainer: {

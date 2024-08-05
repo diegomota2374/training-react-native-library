@@ -16,3 +16,11 @@ export interface Book {
   modification_date: string;
   chapters: Chapter;
 }
+
+export interface NavigateFormBook {
+  navigate: string;
+}
+
+export interface FormBookProps {
+  initialBook: Book | String;
+}

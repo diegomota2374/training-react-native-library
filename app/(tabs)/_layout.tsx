@@ -27,6 +27,20 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="book/[formBook]"
+        options={{
+          title: "form",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              disabled
+              name={focused ? "home" : "home-outline"}
+              color={color}
+            />
+          ),
+          tabBarButton: () => null,
+        }}
+      />
     </Tabs>
   );
 }

@@ -1,10 +1,11 @@
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { NavigateFormBook } from "@/models/books";
 
-const FloatingButton = () => {
+const FloatingButton = ({ navigate }: NavigateFormBook) => {
   function handleNavigate() {
-    router.navigate("/");
+    router.replace(navigate as any);
   }
 
   return (
