@@ -39,7 +39,7 @@ const useFetchBooks = (currentPage: number, itemsPerPage: number) => {
     }, [fetchBooks])
   );
 
-  return { books, totalPages, error, loading, fetchBooks };
+  return { books, totalPages, error, loading, fetchBooks, refetch: fetchBooks };
 };
 
 export default useFetchBooks;

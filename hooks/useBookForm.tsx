@@ -1,55 +1,44 @@
 import axios from "axios";
-import { router, useFocusEffect } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import { useForm, FieldValues } from "react-hook-form";
 import { Alert } from "react-native";
 import { FormBookProps, Book } from "@/models/books";
+import useFetchBooks from "./useFetchBooks";
 
 const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 
 const useBookForm = ({ initialBook }: FormBookProps) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [bookToDelete, setBookToDelete] = useState<Book | null>(null);
 
   const {
     control,
     handleSubmit,
     setValue,
-    getValues,
     formState: { errors },
   } = useForm<Book>({
-    defaultValues: {
-      title: "",
-      author: "",
-      genre: "",
-    },
+    defaultValues: initialBook as any,
   });
 
-  useFocusEffect(
-    useCallback(() => {
-      if (typeof initialBook === "string" && initialBook !== "forme") {
-        try {
-          console.log(initialBook);
-          const book = JSON.parse(initialBook) as Book;
-          setValue("id", book.id);
-          setValue("title", book.title);
-          setValue("author", book.author);
-          setValue("genre", book.genre);
-        } catch (error) {
-          console.error("Failed to parse initialBook:", error);
-        }
-      } else if (typeof initialBook === "object" && initialBook !== null) {
-        const book = initialBook as Book;
-        setValue("id", book.id);
-        setValue("title", book.title);
-        setValue("author", book.author);
-        setValue("genre", book.genre);
-      } else {
-        setValue("title", "");
-        setValue("author", "");
-        setValue("genre", "");
+  useEffect(() => {
+    if (typeof initialBook === "string" && initialBook !== "form") {
+      try {
+        const book = JSON.parse(initialBook) as Book;
+        Object.keys(book).forEach((key) => {
+          setValue(key as keyof Book, book[key as keyof Book]);
+        });
+      } catch (error) {
+        console.error("Failed to parse initialBook:", error);
       }
-    }, [initialBook, setValue])
-  );
+    } else if (typeof initialBook === "object" && initialBook !== null) {
+      const book = initialBook as Book;
+      Object.keys(book).forEach((key) => {
+        setValue(key as keyof Book, book[key as keyof Book]);
+      });
+    }
+  }, [initialBook, setValue]);
 
   const onSubmit = async (data: Book) => {
     setLoading(true);
@@ -70,14 +59,34 @@ const useBookForm = ({ initialBook }: FormBookProps) => {
     }
   };
 
+  const onDeleteBook = async (id: number) => {
+    setLoading(true);
+    try {
+      await axios.delete(`${apiUrl}/books/${id}`);
+      // setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
+    } catch (error) {
+      console.error("Error deleting book:", error);
+      // setError("Error deleting book.");
+    } finally {
+      setLoading(false);
+    }
+    setIsModalVisible(false);
+    setBookToDelete(null);
+  };
+
   return {
     onSubmit,
     loading,
     control,
+    onDeleteBook,
+    isModalVisible,
+    setIsModalVisible,
+    bookToDelete,
+    setBookToDelete,
     handleSubmit,
     setValue,
-    getValues,
     errors,
   };
 };
+
 export default useBookForm;

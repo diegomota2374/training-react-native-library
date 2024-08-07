@@ -5,16 +5,12 @@ export interface Chapter {
 }
 
 export interface Book {
-  id: number;
+  id?: string;
   title: string;
   author: string;
-  description: string;
-  year: number;
   genre: string;
-  img: string;
-  creation_date: string;
-  modification_date: string;
-  chapters: Chapter;
+  description?: string;
+  image?: string;
 }
 
 export interface NavigateFormBook {

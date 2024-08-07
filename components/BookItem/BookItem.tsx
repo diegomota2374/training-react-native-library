@@ -7,8 +7,19 @@ import { ThemedView } from "../ThemedView/ThemedView";
 import { ThemedText } from "../ThemedText/ThemedText";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import { router } from "expo-router";
 
-const BookItem = ({ book }: { book: Book }) => {
+interface BookItemProps {
+  book: Book;
+  setBookToDelete: (book: Book | null) => void;
+  setIsModalVisible: (visible: boolean) => void;
+}
+
+const BookItem: React.FC<BookItemProps> = ({
+  book,
+  setBookToDelete,
+  setIsModalVisible,
+}) => {
   const [showButtons, setShowButtons] = useState(false);
   const [animation] = useState(new Animated.Value(0));
 
@@ -16,10 +27,10 @@ const BookItem = ({ book }: { book: Book }) => {
   const toggleButtons = () => {
     if (showButtons) {
       Animated.timing(animation, {
-        toValue: 0,
+        toValue: showButtons ? 0 : 1,
         duration: 300,
         useNativeDriver: true,
-      }).start(() => setShowButtons(false));
+      }).start(() => setShowButtons((prev) => !prev));
     } else {
       setShowButtons(true);
       Animated.timing(animation, {
@@ -36,6 +47,12 @@ const BookItem = ({ book }: { book: Book }) => {
     outputRange: [0, 1],
   });
 
+  //forwards to the form in edit mode
+  const useEditBook = (item: Book) => {
+    const encodedBook = encodeURIComponent(JSON.stringify(item));
+    router.navigate(`/book/${encodedBook}`);
+  };
+
   return (
     <TouchableOpacity
       onPress={toggleButtons}
@@ -46,7 +63,7 @@ const BookItem = ({ book }: { book: Book }) => {
         <Image
           style={styles.bookImg}
           source={{
-            uri: book.img,
+            uri: book.image,
           }}
         />
         <ThemedView style={styles.textContainer}>
@@ -66,8 +83,13 @@ const BookItem = ({ book }: { book: Book }) => {
         <Animated.View
           style={[styles.buttonContainer, { opacity: buttonOpacity }]}
         >
-          <EditButton onPress={() => alert("Edit button pressed")} />
-          <DeleteButton onPress={() => alert("Delete button pressed")} />
+          <EditButton onPress={() => useEditBook(book)} />
+          <DeleteButton
+            onPress={() => {
+              setBookToDelete(book);
+              setIsModalVisible(true);
+            }}
+          />
         </Animated.View>
       )}
     </TouchableOpacity>

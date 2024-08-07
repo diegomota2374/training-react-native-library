@@ -1,15 +1,14 @@
 import BookForm from "@/components/BookForm/BookForm";
 import ParallaxScrollView from "@/components/ParallaxScrollView/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText/ThemedText";
 import { ThemedView } from "@/components/ThemedView/ThemedView";
 import { useLocalSearchParams } from "expo-router";
 import { Image, StyleSheet } from "react-native";
 
 const FormBook = () => {
-  const { book } = useLocalSearchParams();
+  const { formBook } = useLocalSearchParams();
 
   const initialBook =
-    book && book !== "forme" ? JSON.parse(book as string) : "forme";
+    formBook && formBook !== "form" ? JSON.parse(formBook as string) : "form";
 
   return (
     <ParallaxScrollView
