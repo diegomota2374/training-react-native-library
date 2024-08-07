@@ -72,6 +72,29 @@ const BookForm = ({ initialBook }: FormBookProps) => {
 
   return (
     <ThemedView style={styles.container}>
+      <ThemedText style={styles.label}>Imagem:</ThemedText>
+      <Controller
+        control={control}
+        name="image"
+        rules={{ required: "A Imagem é obrigatória" }}
+        render={({ field: { value }, fieldState: { error } }) => (
+          <View style={styles.imagePickerContainer}>
+            <TouchableOpacity
+              style={styles.imagePickerButton}
+              onPress={pickImage}
+            >
+              <ThemedText style={styles.imagePickerButtonText}>
+                Escolha uma imagem da capa
+              </ThemedText>
+            </TouchableOpacity>
+            {value && <Image source={{ uri: value }} style={styles.image} />}
+            {error && (
+              <ThemedText style={styles.errorText}>{error.message}</ThemedText>
+            )}
+          </View>
+        )}
+      />
+
       <ThemedText style={styles.label}>Título:</ThemedText>
       <Controller
         control={control}
@@ -135,25 +158,6 @@ const BookForm = ({ initialBook }: FormBookProps) => {
         <ThemedText style={styles.errorText}>{errors.genre.message}</ThemedText>
       )}
 
-      <ThemedText style={styles.label}>Imagem:</ThemedText>
-      <Controller
-        control={control}
-        name="image"
-        rules={{ required: "A Imagem é obrigatória" }}
-        render={({ field: { value }, fieldState: { error } }) => (
-          <View style={styles.imagePickerContainer}>
-            <Button
-              title="Pick an image from camera roll"
-              onPress={pickImage}
-            />
-            {value && <Image source={{ uri: value }} style={styles.image} />}
-            {error && (
-              <ThemedText style={styles.errorText}>{error.message}</ThemedText>
-            )}
-          </View>
-        )}
-      />
-
       <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
         <ThemedText style={styles.buttonText}>
           {loading ? (
@@ -199,6 +203,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 10,
+  },
+  imagePickerButton: {
+    backgroundColor: "#6AB7E2",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  imagePickerButtonText: {
+    color: "#fff",
+    fontSize: 16,
   },
   image: {
     width: 200,
